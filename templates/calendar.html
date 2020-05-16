@@ -20,7 +20,7 @@
 <body>
     <a href="#" onclick="signOut();">Sign out</a>
 
-    <div id="eventModal" class="modal fade" role="dialog">
+    <div id="addModal" class="modal fade" role="dialog">
         <div class="modal-dialog modal-lg" role="content">
             <div class="modal-content">
                 <div class="modal-header">
@@ -36,6 +36,10 @@
                                 <label for="eventName">Event name</label>
                                 <input type="text" class="form-control" id="eventName"
                                     placeholder="Enter event name">
+                            </div>
+                            <div class="form-group col-sm-4">
+                                <label for="startDate">Start date</label>
+                                <input type="datetime-local" class="form-control" id="startDate" placeholder="Enter start date">
                             </div>
                             <div class="form-group col-sm-4">
                                 <label for="endDate">End date</label>
