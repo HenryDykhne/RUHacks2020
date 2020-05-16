@@ -1,0 +1,51 @@
+#text p {
+  display: inline-block;
+  font-size: 21px;
+  text-align: center;
+  position: relative;
+  animation: appear 2s;
+  left: 10px;
+  padding-bottom: 50px
+}
+  body, input, select, textarea {
+    color: #ffffff;
+    font-family: "brandon grotesque", sans-serif;
+    font-weight: 300;
+    font-size: 1rem;
+    line-height: 1.65;
+  }
+@keyframes appear {
+  from {
+    left: -100px;
+  }
+  to {
+    left: 10px;
+  }
+}
+@-moz-keyframes appear {
+  /* Firefox */
+  from {
+    left: -100px;
+  }
+  to {
+    left: 10px;
+  }
+}
+@-webkit-keyframes appear {
+  /* Safari and Chrome */
+  from {
+    left: -100px;
+  }
+  to {
+    left: 10px;
+  }
+}
+@-o-keyframes appear {
+  /* Opera */
+  from {
+    left: -100px;
+  }
+  to {
+    left: 10px;
+  }
+}
