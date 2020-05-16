@@ -20,6 +20,10 @@ def home():
     writeEvents()
     return render_template("index.html")
 
+@app.route("/calendar")
+def calendar():
+    return render_template("calendar.html")
+
 def writeEvents():
     doc_ref = db.collection(u'users').document(u'userID')
     doc_ref.set({
