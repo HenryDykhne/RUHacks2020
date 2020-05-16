@@ -1,20 +1,19 @@
 import itertools
 import distance
+import json
 from datetime import datetime, timedelta
 
 ##events passed to this function must be ordered by time
 def checkRoute(events):
     onTimeList = []
     for firstEvent, secondEvent in itertools.izip(events, events[1:]): 
-        print("hell")
         onTimeList.append(onTime(firstEvent, secondEvent, firstEvent["transportMode"]))
 
-    return onTimeList
+    return json.dumps(onTimeList)
 
 def onTime(firstEvent, secondEvent, transportMode):
     try:
         transitTime = distance.tripDuration(firstEvent["location"], secondEvent["location"], transportMode)  
-        print("Hello" + str(transitTime))
     except Exception as error:
         return {"error": error}
     
@@ -27,8 +26,9 @@ def onTime(firstEvent, secondEvent, transportMode):
     return {
         u'onTime': onTime,
         u'transitTime': transitTime,
-        u'earlyBy': earlyBy
+        u'earlyBy': str(earlyBy)
     }
+
 ev = [
     {"start":{"dateTime": datetime(2020, 12, 1, 1, 2, 3)}, "end":{"dateTime": datetime(2020, 12, 1, 4, 2, 3)}, "location": "toronto",  "transportMode": "driving"},
     {"start":{"dateTime": datetime(2020, 12, 2, 6, 2, 3)}, "end":{"dateTime": datetime(2020, 12, 8, 1, 2, 3)}, "location": "florida",  "transportMode": "driving"},
