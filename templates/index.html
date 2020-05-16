@@ -6,9 +6,12 @@
 		<head>
 		<title>nav.igate</title>
 		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-au-compatible" content="ie=edge">
+
 		<link rel="stylesheet" href="assets/css/main.css" />
-		<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="/static/node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/static/node_modules/font-awesome/css/font-awesome.min.css">
 		<link rel="shortcut icon" type="image/png" href="assets/images/favicon.png">
 		
 
@@ -34,7 +37,7 @@
         <ul class="navbar-nav mr-auto">
           <li class="nav-item active"><a class="nav-link" href="#"><span class="fa fa-home fa-lg"></span>
               Home</a></li>
-          <li class="nav-item"><a class="nav-link" href={{ url_for('calendar') }}><span class="fa fa-calendar-alt"></span>
+          <li class="nav-item"><a class="nav-link" href={{ url_for('calendar') }}><span class="fa fa-calendar"></span>
               Calendar</a></li>
           <div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div>
         </ul>
@@ -76,6 +79,8 @@
 </div>
 
 
-
+  <script src="/static/node_modules/jquery/dist/jquery.slim.min.js"></script>
+  <script src="/static/node_modules/popper.js/dist/umd/popper.min.js"></script>
+  <script src="/static/node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
 </body>
 </html>
