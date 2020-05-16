@@ -33,6 +33,42 @@
             </div>
         </div>
     </nav>
+
+    <div id="eventModal" class="modal fade" role="dialog">
+        <div class="modal-dialog modal-lg" role="content">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Add New Event</h4>
+                    <button type="button" class="close" data-dismiss="modal">
+                        &times;
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="form-row">
+                            <div class="form-group col-sm-4">
+                                <label for="eventName">Event name</label>
+                                <input type="text" class="form-control" id="eventName"
+                                    placeholder="Enter event name">
+                            </div>
+                            <div class="form-group col-sm-4">
+                                <label for="endDate">End date</label>
+                                <input type="datetime-local" class="form-control"
+                                    id="endDate" placeholder="Enter end date">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <button type="button" class="btn btn-secondary btn-sm ml-auto"
+                                data-dismiss="modal">Cancel</button>
+                            <button type="button" id="addEventButton" class="btn btn-primary btn-sm ml-1"
+                                data-dismiss="modal">Add</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <h1>Your calendar:</h1>
 
     <div class="container" id="calendar">
@@ -44,19 +80,32 @@
     <script src='/static/node_modules/@fullcalendar/core/main.js'></script>
     <script src='/static/node_modules/@fullcalendar/daygrid/main.js'></script>
     <script src='/static/node_modules/@fullcalendar/timegrid/main.js'></script>
+    <script src="/static/node_modules/@fullcalendar/interaction/main.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             var calendarEl = document.getElementById('calendar');
             
             var calendar = new FullCalendar.Calendar(calendarEl, {
-                plugins: [ 'timeGrid', 'dayGrid' ],
+                plugins: [ 'timeGrid', 'dayGrid', 'interaction' ],
                 defaultView: 'timeGridWeek',
                 events: [
                     {
                         title: 'Walmart Shopping',
-                        start: 2020-05-16
+                        start: '2020-05-16'
                     }
-                ]
+                ],
+                dateClick: function(info) {
+                    $('#eventModal').modal('show');
+                    $('#addEventButton').click(function() {
+                        var name = document.getElementById('eventName').value;
+                        var endDate = document.getElementById('endDate').value;
+                        calendar.addEvent({
+                            title: name,
+                            start: info.dateStr,
+                            end: endDate
+                        });
+                    });
+                }
             });
 
             calendar.render();
