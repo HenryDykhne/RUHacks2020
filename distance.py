@@ -3,12 +3,14 @@ import json
 
 def tripDuration(origin, destination, transportMode):
     parameters = {"origins": origin, "destinations": destination, "mode": transportMode, "key": "AIzaSyBD2wdIZTDbNHGb1KjLLneHmqtxo-IMF5A"}
-    response = json.loads(requests.get("https://maps.googleapis.com/maps/api/distancematrix/json?", params=parameters))
-    print(response)
-    if response["ok"] and response["content"]:
-        return response["content"]["rows"][0]["elements"][0]["duration"]["value"]
+    response = requests.get("https://maps.googleapis.com/maps/api/distancematrix/json?", params=parameters)
+    
+    if response.ok:
+        content = response.json()
+        return content["rows"][0]["elements"][0]["duration"]["value"]
     else:
+        print("fail")
         raise ValueError('failed to get duration')
     
 
-tripDuration("toronto", "california", "driving")
+#tripDuration("toronto", "california", "driving")
