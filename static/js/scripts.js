@@ -1,6 +1,13 @@
 document.addEventListener('DOMContentLoaded', function () {
     var calendarEl = document.getElementById('calendar');
 
+    var arr = [
+        {
+            title: 'Shopping at Walmart',
+            start: '2020-05-16'
+        }
+    ]
+
     var calendar = new FullCalendar.Calendar(calendarEl, {
         plugins: ['timeGrid', 'dayGrid', 'interaction', 'bootstrap'],
         defaultView: 'timeGridWeek',
@@ -33,12 +40,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 info.event.remove();
             });
         },
-        events: [
-            {
-                title: 'Walmart Shopping',
-                start: '2020-05-16'
-            }
-        ]
+        events: arr
     });
 
     calendar.render();
