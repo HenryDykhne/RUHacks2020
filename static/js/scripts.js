@@ -2,8 +2,9 @@ document.addEventListener('DOMContentLoaded', function () {
     var calendarEl = document.getElementById('calendar');
 
     var calendar = new FullCalendar.Calendar(calendarEl, {
-        plugins: ['timeGrid', 'dayGrid', 'interaction'],
+        plugins: ['timeGrid', 'dayGrid', 'interaction', 'bootstrap'],
         defaultView: 'timeGridWeek',
+        themeSystem: 'bootstrap',
         header: {
             center: 'addEventButton'
         },
@@ -25,6 +26,12 @@ document.addEventListener('DOMContentLoaded', function () {
                     document.getElementById('eventForm').reset();
                 }
             }
+        },
+        eventClick: function(info) {
+            $('#editModal').modal('show');
+            $('#delButton').click(function() {
+                info.event.remove();
+            });
         },
         events: [
             {

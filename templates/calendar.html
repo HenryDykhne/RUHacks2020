@@ -13,6 +13,7 @@
     <link rel="stylesheet" href='/static/node_modules/@fullcalendar/core/main.css'>
     <link rel="stylesheet" href='/static/node_modules/@fullcalendar/daygrid/main.css'>
     <link rel="stylesheet" href='/static/node_modules/@fullcalendar/timegrid/main.css'>
+    <link rel="stylesheet" href="/static/node_modules/@fullcalendar/bootstrap/main.css">
 
     <title>nav.igate</title>
 </head>
@@ -59,6 +60,42 @@
         </div>
     </div>
 
+    <div id="editModal" class="modal fade" role="dialog">
+        <div class="modal-dialog modal-lg" role="content">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Edit Event</h4>
+                    <button type="button" class="close" data-dismiss="modal">
+                        &times;
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="form-row">
+                            <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                                <label class="btn btn-secondary active">
+                                    <input type="radio" name="modes" id="car" checked> Car
+                                </label>
+                                <label class="btn btn-secondary">
+                                    <input type="radio" name="modes" id="walk"> Walk
+                                </label>
+                                <label class="btn btn-secondary">
+                                    <input type="radio" name="modes" id="plane"> Plane
+                                </label>
+                            </div>
+                        </div>   
+                        <div class="form-row">
+                            <button type="button" id="delButton" class="btn btn-danger btn-sm ml-auto"
+                                data-dismiss="modal">Delete</button>
+                            <button type="button" id="editButton" class="btn btn-primary btn-sm ml-1"
+                                data-dismiss="modal">Save Changes</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <h1>Your calendar:</h1>
 
     <div class="container" id="calendar">
@@ -71,6 +108,7 @@
     <script src='/static/node_modules/@fullcalendar/daygrid/main.js'></script>
     <script src='/static/node_modules/@fullcalendar/timegrid/main.js'></script>
     <script src="/static/node_modules/@fullcalendar/interaction/main.js"></script>
+    <script src="/static/node_modules/@fullcalendar/bootstrap/main.js"></script>
     <script type="text/javascript" src="/static/js/scripts.js"></script>
     <script>
         function signOut() {
