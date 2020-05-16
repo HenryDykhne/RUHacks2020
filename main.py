@@ -1,9 +1,10 @@
 from flask import Flask, render_template
 
-
+import utility
 import firebase_admin
 from firebase_admin import credentials
 from firebase_admin import firestore
+from datetime import datetime, timedelta
 
 # Use the application default credentials
 cred = credentials.ApplicationDefault()
@@ -23,6 +24,15 @@ def home():
 @app.route("/calendar")
 def calendar():
     return render_template("calendar.html")
+
+@app.route("/test")
+def test():
+    ev = [
+        {"start":{"dateTime": datetime(2020, 12, 1, 1, 2, 3)}, "end":{"dateTime": datetime(2020, 12, 1, 4, 2, 3)}, "location": "toronto",  "transportMode": "driving"},
+        {"start":{"dateTime": datetime(2020, 12, 2, 6, 2, 3)}, "end":{"dateTime": datetime(2020, 12, 8, 1, 2, 3)}, "location": "florida",  "transportMode": "driving"},
+        {"start":{"dateTime": datetime(2020, 12, 3, 9, 2, 3)}, "end":{"dateTime": datetime(2020, 12, 3, 11, 2, 3)}, "location": "vaughan ontario",  "transportMode": "driving"}
+    ]
+    return utility.checkRoute(ev)
 
 def writeEvents():
     doc_ref = db.collection(u'users').document(u'userID')
