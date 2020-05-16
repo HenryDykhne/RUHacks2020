@@ -25,7 +25,23 @@
 
 <body style="background-color:rgb(41, 151, 234);">
 
-<div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div>
+  <nav class="navbar navbar-dark bg-dark navbar-expand-sm fixed-top">
+    <div class="container">
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#Navbar">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="Navbar">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active"><a class="nav-link" href="#"><span class="fa fa-home fa-lg"></span>
+              Home</a></li>
+          <li class="nav-item"><a class="nav-link" href={{ url_for('calendar') }}><span class="fa fa-calendar-alt"></span>
+              Calendar</a></li>
+          <div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
     <script>
       function onSignIn(googleUser) {
         // Useful data for your client-side scripts:
