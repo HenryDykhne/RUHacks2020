@@ -10,8 +10,6 @@ $("document").ready(function(){
                 so we do not need to parse it on the server.
                 JavaScript really does handle JSONs seamlessly
             */
-            //$('#blah').html("On page load, Received string '"+JSON.stringify(data)+"' from server");
-            //We write the object to the console to show that the request was successful
             console.log(data); 
 
         },
@@ -20,5 +18,24 @@ $("document").ready(function(){
             console.log(error); 
         }
     });
+
+    function getEvents(id){
+        $.ajax({
+            type: 'POST',           //Request type
+            dataType: 'json',      //Data type - we will use JSON for almost everything 
+            url: '/getEvents',   //The server endpoint we are connecting to
+            data: {'userID':id},
+            success: function (data) {
+                console.log(data); 
+                return data;
+            },
+            fail: function(error) {
+                // Non-200 return, do something with error
+                console.log(error); 
+            }
+        });
+    }
+
+    console.log(getEvents("userID"));
 });
 

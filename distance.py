@@ -9,7 +9,6 @@ def tripDuration(origin, destination, transportMode):
         content = response.json()
         return content["rows"][0]["elements"][0]["duration"]["value"]
     else:
-        print("fail")
         raise ValueError('failed to get duration')
     
 
