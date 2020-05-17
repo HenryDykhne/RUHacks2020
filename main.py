@@ -14,6 +14,21 @@ def home():
 def calendar():
     return render_template("calendar.html")
 
+
+@app.route("/route1")
+def route1():
+    return render_template("route1.html")
+
+
+@app.route("/route2")
+def route2():
+    return render_template("route2.html")
+
+
+@app.route("/route3")
+def route3():
+    return render_template("route3.html")
+
 @app.route("/test")
 def test():
     ev = [

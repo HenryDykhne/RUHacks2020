@@ -10,6 +10,7 @@
     <!-- Load jquery -->
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="/static/src/app.js"></script>
+    <script src="https://apis.google.com/js/client.js?onload=handleClientLoad"></script>
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="/static/node_modules/bootstrap/dist/css/bootstrap.min.css">
@@ -93,7 +94,10 @@
                                     <input type="radio" name="modes" id="plane"> Plane
                                 </label>
                             </div>
-                        </div>   
+                            <div class="container">
+                                <button type="button" id="routeButton" class="btn btn-secondary">Open Map</button>
+                            </div>
+                        </div>
                         <div class="form-row">
                             <button type="button" id="delButton" class="btn btn-danger btn-sm ml-auto"
                                 data-dismiss="modal">Delete</button>

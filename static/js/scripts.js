@@ -3,8 +3,25 @@ document.addEventListener('DOMContentLoaded', function () {
 
     var arr = [
         {
+            id: '1',
             title: 'Shopping at Walmart',
-            start: '2020-05-16'
+            start: '2020-05-16',
+            end: '2020-05-17',
+            location: 'University of Calgary'
+        },
+        {
+            id: '2',
+            title: 'Eat at McDonalds',
+            start: '2020-05-17',
+            end: '2020-05-18',
+            location: 'UT Austin'
+        },
+        {
+            id: '3',
+            title: 'Go to the beach',
+            start: '2020-05-18',
+            end: '2020-05-19',
+            location: 'University of Berkeley'
         }
     ]
 
@@ -13,6 +30,7 @@ document.addEventListener('DOMContentLoaded', function () {
         googleCalendarApiKey: 'AIzaSyD3-iMIisR49ogp0kdaY7Snf7MUyeBb3PM',
         defaultView: 'timeGridWeek',
         themeSystem: 'bootstrap',
+        selectable: true,
         header: {
             center: 'addEventButton'
         },
@@ -37,13 +55,18 @@ document.addEventListener('DOMContentLoaded', function () {
         },
         eventClick: function(info) {
             $('#editModal').modal('show');
+            $('#routeButton').unbind().click(function() {
+                var id = info.event.id;
+                window.open("route" + id);
+            });
+
             $('#delButton').click(function() {
                 info.event.remove();
             });
         },
-        events: 'utexas.edu_g7oiojf3mkslee5cgq0ocn0ck4@group.calendar.google.com'
-        //events: arr
+        events: arr
     });
 
+    console.log(calendar.getEvents());
     calendar.render();
 });
