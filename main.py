@@ -25,10 +25,29 @@ def test():
 
 @app.route("/getEvents", methods=['GET', 'POST']) 
 def getEvents():
-    print("hello")
     data = request.form['userID']
-    print("data: " + data)
     return storage.getEvents(data)
+
+import re
+
+def date_hook(json_dict):
+    for (key, value) in json_dict.items():
+        if type(value) is str and re.match('\d{4}-[01]\d-[0-3]\dT[0-2]\d:[0-5]\d:[0-5]\d(?:\.\d+)?Z?', value):
+            json_dict[key] = datetime.strptime(value, "%Y-%m-%dT%H:%M:%S.%fZ")
+        else:
+            pass
+
+    return json_dict
+
+
+@app.route("/getOnTimeList", methods=['GET', 'POST']) 
+def getOnTimeList():
+    data = json.loads(request.form['events'], object_hook=date_hook)
+    print(data[0]["location"])
+    print("data: " + str(data))
+    return utility.checkRoute(data)
+
+
 
 if __name__ == "__main__":
     app.run(debug=True)
