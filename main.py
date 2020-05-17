@@ -1,24 +1,13 @@
-from flask import Flask, render_template
-
+from flask import Flask, render_template, request, jsonify
+import storage
 import utility
-import firebase_admin
-from firebase_admin import credentials
-from firebase_admin import firestore
+import json
 from datetime import datetime, timedelta
-
-# Use the application default credentials
-cred = credentials.ApplicationDefault()
-firebase_admin.initialize_app(cred, {
-  'projectId': 'ru-hacks-2020',
-})
-
-db = firestore.client()
 
 app = Flask(__name__)
 
 @app.route("/")
 def home():
-    writeEvents()
     return render_template("index.html")
 
 @app.route("/calendar")
@@ -34,14 +23,12 @@ def test():
     ]
     return utility.checkRoute(ev)
 
-def writeEvents():
-    doc_ref = db.collection(u'users').document(u'userID')
-    doc_ref.set({
-        u'events': [
-            u'dummyEvent1',
-            u'dummyEvent2'
-        ]
-    })
+@app.route("/getEvents", methods=['GET', 'POST']) 
+def getEvents():
+    print("hello")
+    data = request.form['userID']
+    print("data: " + data)
+    return storage.getEvents(data)
 
 if __name__ == "__main__":
     app.run(debug=True)
