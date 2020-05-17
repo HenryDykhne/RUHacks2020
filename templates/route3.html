@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>nav.igate</title>
+    <meta name="viewport" content="initial-scale=1.0">
+    <meta charset="utf-8">
+    <style>
+      /* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+      #map {
+        height: 100%;
+      }
+      /* Optional: Makes the sample page fill the window. */
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <iframe width="1500" height="620" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/directions?origin=place_id:ChIJZe22kZq1RIYR4Ed2g630JxE&destination=place_id:ChIJwdcixRh3j4ARiTJrO-o0gNo&key=AIzaSyBmYcmH6W4oQDvu0l1FJBKGeimHtc6AUNA" allowfullscreen></iframe>
+    
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBmYcmH6W4oQDvu0l1FJBKGeimHtc6AUNA&callback=initMap"
+    async defer></script>
+  </body>
+</html>
